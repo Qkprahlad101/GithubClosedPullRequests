@@ -17,30 +17,36 @@
 
         <EditText
             android:id="@+id/ownerEditText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/owner"
             android:padding="8dp"
+            android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:id="@+id/repoEditText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
             android:layout_height="wrap_content"
             android:hint="@string/repo"
             android:padding="8dp"
+            android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/ownerEditText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
         <Button
             android:id="@+id/fetchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/show_closed_pul_requests"
-            android:padding="8dp"
+            android:text="@string/show_closed_pull_requests"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/repoEditText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
