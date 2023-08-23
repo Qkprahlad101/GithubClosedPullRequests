@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.databinding.ActivityMainBinding
+import com.git.closedpullrequests.ui.adapter.PullRequestAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

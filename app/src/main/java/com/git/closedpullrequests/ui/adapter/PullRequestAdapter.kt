@@ -1,4 +1,4 @@
-package com.git.closedpullrequests.ui
+package com.git.closedpullrequests.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.git.closedpullrequests.R
-import com.git.closedpullrequests.formatDate
-import com.git.closedpullrequests.model.data.ClosedPullRequest
+import com.git.closedpullrequests.utils.formatDate
+import com.git.closedpullrequests.model.data.response.ClosedPullRequestResponse
 
-class PullRequestAdapter(private var pullRequests: List<ClosedPullRequest>) : RecyclerView.Adapter<PullRequestAdapter.ViewHolder>() {
+class PullRequestAdapter(private var pullRequests: List<ClosedPullRequestResponse>) : RecyclerView.Adapter<PullRequestAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_pull_request, parent, false)
@@ -23,7 +23,7 @@ class PullRequestAdapter(private var pullRequests: List<ClosedPullRequest>) : Re
         holder.bind(pullRequest)
     }
 
-    fun setClosedPullRequests(closedPullRequests: List<ClosedPullRequest>) {
+    fun setClosedPullRequests(closedPullRequests: List<ClosedPullRequestResponse>) {
         this.pullRequests = closedPullRequests
     }
 
@@ -38,7 +38,7 @@ class PullRequestAdapter(private var pullRequests: List<ClosedPullRequest>) : Re
         private val userNameTextView: TextView = itemView.findViewById(R.id.userNameTextView)
         private val userImageView: ImageView = itemView.findViewById(R.id.userImageView)
 
-        fun bind(pullRequest: ClosedPullRequest) {
+        fun bind(pullRequest: ClosedPullRequestResponse) {
             titleTextView.text = "Title: "+ pullRequest.title
             createdDateTextView.text = "Created Date: " +  formatDate(pullRequest.createdDate)
             closedDateTextView.text = "Closed Date: " + formatDate(pullRequest.closedDate)
