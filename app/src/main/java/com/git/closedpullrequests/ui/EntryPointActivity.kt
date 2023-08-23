@@ -1,12 +1,12 @@
 package com.git.closedpullrequests.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.git.closedpullrequests.R
@@ -17,33 +17,22 @@ import dagger.hilt.android.AndroidEntryPoint
 class EntryPointActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: ClosedPullRequestsViewModel by viewModels()
-    var adapter = PullRequestAdapter(emptyList())
+    private var adapter = PullRequestAdapter(emptyList())
 
-    private lateinit var recycler: RecyclerView
-    private lateinit var fetchButton: Button
-    private lateinit var ownerEditText: EditText
-    private lateinit var repoEditText: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-
-        recycler = findViewById(R.id.recyclerView)
-        fetchButton = findViewById(R.id.fetchButton)
-        ownerEditText = findViewById(R.id.ownerEditText)
-        repoEditText = findViewById(R.id.repoEditText)
-
-        recycler.apply {
+        binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             this.adapter = adapter
         }
 
 
-        fetchButton.setOnClickListener {
-            val owner = ownerEditText.text.toString().trimEnd()
-            val repo = repoEditText.text.toString().trimEnd()
+        binding.fetchButton.setOnClickListener {
+            val owner = binding.ownerEditText.text.toString().trimEnd()
+            val repo = binding.repoEditText.text.toString().trimEnd()
 
             if (owner.isEmpty() || repo.isEmpty()) {
                 Toast.makeText(this, "Please enter both fields", Toast.LENGTH_SHORT).show()
@@ -62,8 +51,8 @@ class EntryPointActivity : AppCompatActivity() {
             adapter = PullRequestAdapter(closedPullRequests)
             adapter.setClosedPullRequests(closedPullRequests)
             adapter.notifyDataSetChanged()
-            recycler.adapter = adapter
-            recycler.addItemDecoration(ItemSpacingDecoration(spacing))
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.addItemDecoration(ItemSpacingDecoration(spacing))
         }
     }
 
