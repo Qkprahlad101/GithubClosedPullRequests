@@ -8,12 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.databinding.ActivityMainBinding
-import com.git.closedpullrequests.model.data.ClosedPullRequest
-import com.git.closedpullrequests.model.data.MockList
 import dagger.hilt.android.AndroidEntryPoint
 
-
-// Single Activity per app
 @AndroidEntryPoint
 class EntryPointActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -37,7 +33,6 @@ class EntryPointActivity : AppCompatActivity() {
         viewModel.fetchClosedPullRequests(owner, repo)
 
         viewModel.closedPullRequests.observe(this) { closedPullRequests ->
-            Log.d("Main", "$closedPullRequests")
             adapter = PullRequestAdapter(closedPullRequests)
             adapter.setClosedPullRequests(closedPullRequests)
             adapter.notifyDataSetChanged()

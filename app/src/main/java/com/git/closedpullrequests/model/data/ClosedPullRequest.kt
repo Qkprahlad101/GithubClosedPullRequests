@@ -25,4 +25,3 @@ object MockList{
         return itemList
     }
 }
-//ClosedPullRequest(title=Added comment, createdDate=2023-08-21T16:15:34Z, closedDate=2023-08-21T16:15:42Z, user=User(userName=Qkprahlad101, imageUrl=https://avatars.githubusercontent.com/u/45912671?v=4))
