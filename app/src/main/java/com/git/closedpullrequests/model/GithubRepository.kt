@@ -1,5 +1,7 @@
 package com.git.closedpullrequests.model
 
+import android.app.Application
+import android.widget.Toast
 import com.git.closedpullrequests.model.data.ClosedPullRequest
 import com.git.closedpullrequests.model.data.GitHubApiService
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +21,7 @@ class GitHubRepository @Inject constructor(
                 val closedPullRequests = response.body() ?: emptyList()
                 emit(closedPullRequests)
             } else {
+                val statusCode = response.code()
                 throw Exception("Failed to fetch closed pull requests")
             }
         }.flowOn(Dispatchers.IO)

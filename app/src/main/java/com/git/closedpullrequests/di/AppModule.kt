@@ -1,5 +1,6 @@
 package com.git.closedpullrequests.di
 
+import android.app.Application
 import com.git.closedpullrequests.model.GitHubRepository
 import com.git.closedpullrequests.model.data.GitHubApiService
 import com.git.closedpullrequests.ui.ClosedPullRequestsViewModel
@@ -33,7 +34,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideClosedPullRequestsViewModel(repository: GitHubRepository): ClosedPullRequestsViewModel {
-        return ClosedPullRequestsViewModel(repository)
+    fun provideClosedPullRequestsViewModel(repository: GitHubRepository, application: Application): ClosedPullRequestsViewModel {
+        return ClosedPullRequestsViewModel(repository, application)
     }
 }
