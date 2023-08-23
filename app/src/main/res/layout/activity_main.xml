@@ -18,10 +18,11 @@
         <EditText
             android:id="@+id/ownerEditText"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="@string/owner"
             android:padding="8dp"
             android:textSize="20sp"
+            android:layout_marginTop="12dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -30,7 +31,7 @@
             android:id="@+id/repoEditText"
             android:layout_width="0dp"
             android:layout_marginTop="8dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="@string/repo"
             android:padding="8dp"
             android:textSize="20sp"
