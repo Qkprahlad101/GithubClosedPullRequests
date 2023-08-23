@@ -32,14 +32,13 @@ class EntryPointActivity : AppCompatActivity() {
     }
 
     private fun observer() {
-        val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
 
         viewModel.closedPullRequests.observe(this) { closedPullRequests ->
             adapter = PullRequestAdapter(closedPullRequests)
             adapter.setClosedPullRequests(closedPullRequests)
             adapter.notifyDataSetChanged()
             binding.recyclerView.adapter = adapter
-            binding.recyclerView.addItemDecoration(ItemSpacingDecoration(spacing))
+            binding.recyclerView.addItemDecoration(ItemSpacingDecoration(R.string.spacing))
         }
 
         viewModel.loaderVisibility.observe(this){//to show loader
