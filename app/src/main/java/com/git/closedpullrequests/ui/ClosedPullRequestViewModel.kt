@@ -20,11 +20,13 @@ class ClosedPullRequestsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _closedPullRequests = MutableLiveData<List<ClosedPullRequest>>()
+    val loaderVisibility = MutableLiveData<Boolean>(false)
     val closedPullRequests: LiveData<List<ClosedPullRequest>>
         get() = _closedPullRequests
 
     fun fetchClosedPullRequests(owner: String, repo: String) {
         viewModelScope.launch {
+            loaderVisibility.postValue(true)
             try {
                 repository.getClosedPullRequests(owner, repo).collect {
                     _closedPullRequests.value = it
