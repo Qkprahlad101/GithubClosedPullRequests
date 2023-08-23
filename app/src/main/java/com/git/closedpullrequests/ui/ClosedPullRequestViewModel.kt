@@ -30,7 +30,7 @@ class ClosedPullRequestsViewModel @Inject constructor(
                     _closedPullRequests.value = it
                 }
             } catch (e: Exception) {
-                Toast.makeText(application, "Failed to get Data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(application, "Error occured: $e ", Toast.LENGTH_SHORT).show()
             }
         }
     }
