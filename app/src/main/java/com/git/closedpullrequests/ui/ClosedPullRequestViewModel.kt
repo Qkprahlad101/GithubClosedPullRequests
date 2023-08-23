@@ -19,12 +19,12 @@ class ClosedPullRequestsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _closedPullRequests = MutableLiveData<List<ClosedPullRequest>>()
-    val loaderVisibility = MutableLiveData<Boolean>(false)
+    val loaderVisibility = MutableLiveData(false)
     val closedPullRequests: LiveData<List<ClosedPullRequest>>
         get() = _closedPullRequests
 
     fun fetchClosedPullRequests(owner: String, repo: String) {
-        loaderVisibility.postValue(true)
+        loaderVisibility.value = true
         viewModelScope.launch {
             try {
                 repository.getClosedPullRequests(owner, repo).collect {
@@ -32,6 +32,8 @@ class ClosedPullRequestsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 Toast.makeText(application, "Error occured: $e ", Toast.LENGTH_SHORT).show()
+            }finally {
+                loaderVisibility.value = false
             }
         }
     }

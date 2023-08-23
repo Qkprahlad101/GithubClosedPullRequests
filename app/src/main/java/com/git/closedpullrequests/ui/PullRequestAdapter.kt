@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.git.closedpullrequests.R
+import com.git.closedpullrequests.formatDate
 import com.git.closedpullrequests.model.data.ClosedPullRequest
 
 class PullRequestAdapter(private var pullRequests: List<ClosedPullRequest>) : RecyclerView.Adapter<PullRequestAdapter.ViewHolder>() {
@@ -39,8 +40,8 @@ class PullRequestAdapter(private var pullRequests: List<ClosedPullRequest>) : Re
 
         fun bind(pullRequest: ClosedPullRequest) {
             titleTextView.text = "Title: "+ pullRequest.title
-            createdDateTextView.text = "Created Date: " + pullRequest.createdDate
-            closedDateTextView.text = "Closed Date: " + pullRequest.closedDate
+            createdDateTextView.text = "Created Date: " +  formatDate(pullRequest.createdDate)
+            closedDateTextView.text = "Closed Date: " + formatDate(pullRequest.closedDate)
             userNameTextView.text = "User Name: "+ pullRequest.user.userName
             Glide.with(itemView.context)
                 .load(pullRequest.user.imageUrl)
