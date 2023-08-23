@@ -2,7 +2,7 @@ package com.git.closedpullrequests.di
 
 import android.app.Application
 import com.git.closedpullrequests.model.GitHubRepository
-import com.git.closedpullrequests.model.data.GitHubApiService
+import com.git.closedpullrequests.model.data.apiService.GitHubApiService
 import com.git.closedpullrequests.ui.ClosedPullRequestsViewModel
 import dagger.Module
 import dagger.Provides

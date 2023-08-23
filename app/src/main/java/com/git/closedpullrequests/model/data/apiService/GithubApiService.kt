@@ -1,5 +1,6 @@
-package com.git.closedpullrequests.model.data
+package com.git.closedpullrequests.model.data.apiService
 
+import com.git.closedpullrequests.model.data.response.ClosedPullRequestResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,5 +13,5 @@ interface GitHubApiService {
         @Path("owner") owner: String,
         @Path("repo") repo: String,
         @Query("state") state: String = "closed"
-    ): Response<List<ClosedPullRequest>>
+    ): Response<List<ClosedPullRequestResponse>>
 }

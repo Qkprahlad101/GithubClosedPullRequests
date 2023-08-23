@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.git.closedpullrequests.model.GitHubRepository
-import com.git.closedpullrequests.model.data.ClosedPullRequest
+import com.git.closedpullrequests.model.data.response.ClosedPullRequestResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,9 +18,9 @@ class ClosedPullRequestsViewModel @Inject constructor(
     private val application: Application
 ) : ViewModel() {
 
-    private val _closedPullRequests = MutableLiveData<List<ClosedPullRequest>>()
+    private val _closedPullRequests = MutableLiveData<List<ClosedPullRequestResponse>>()
     val loaderVisibility = MutableLiveData(false)
-    val closedPullRequests: LiveData<List<ClosedPullRequest>>
+    val closedPullRequests: LiveData<List<ClosedPullRequestResponse>>
         get() = _closedPullRequests
 
     fun fetchClosedPullRequests(owner: String, repo: String) {

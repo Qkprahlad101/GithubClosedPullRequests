@@ -1,4 +1,4 @@
-package com.git.closedpullrequests
+package com.git.closedpullrequests.utils
 
 import java.text.SimpleDateFormat
 import java.util.Locale
