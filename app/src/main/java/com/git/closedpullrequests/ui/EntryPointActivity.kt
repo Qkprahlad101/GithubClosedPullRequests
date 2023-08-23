@@ -1,10 +1,12 @@
 package com.git.closedpullrequests.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.databinding.ActivityMainBinding
@@ -41,6 +43,10 @@ class EntryPointActivity : AppCompatActivity() {
             binding.recyclerView.addItemDecoration(ItemSpacingDecoration(spacing))
         }
 
+        viewModel.loaderVisibility.observe(this){//to show loader
+            binding.progressBar.visibility = View.GONE
+        }
+
         binding.fetchButton.setOnClickListener {
             val owner = binding.ownerEditText.text.toString().trimEnd()
             val repo = binding.repoEditText.text.toString().trimEnd()
@@ -48,6 +54,7 @@ class EntryPointActivity : AppCompatActivity() {
             if (owner.isEmpty() || repo.isEmpty()) {
                 Toast.makeText(this, "Please enter both fields", Toast.LENGTH_SHORT).show()
             } else {
+                binding.progressBar.visibility = View.VISIBLE
                 viewModel.fetchClosedPullRequests(owner, repo)
             }
         }
