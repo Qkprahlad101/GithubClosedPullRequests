@@ -20,7 +20,7 @@ class GitHubRepository @Inject constructor(
                 emit(closedPullRequests)
             } else {
                 val statusCode = response.code()
-                throw Exception("Failed to fetch closed pull requests")
+                throw Exception("Failed to fetch closed pull requests, Status code: $statusCode")
             }
         }.flowOn(Dispatchers.IO)
     }

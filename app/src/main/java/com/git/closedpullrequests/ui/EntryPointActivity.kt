@@ -44,7 +44,7 @@ class EntryPointActivity : AppCompatActivity() {
             binding.recyclerView.adapter = adapter
         }
 
-        viewModel.loaderVisibility.observe(this){ it ->
+        viewModel.loaderVisibility.observe(this){
             if(it) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
         }
 
@@ -55,7 +55,6 @@ class EntryPointActivity : AppCompatActivity() {
             if (owner.isEmpty() || repo.isEmpty()) {
                 Toast.makeText(this, "Please enter both fields!!", Toast.LENGTH_SHORT).show()
             } else {
-                binding.progressBar.visibility = View.VISIBLE
                 viewModel.fetchClosedPullRequests(owner, repo)
             }
         }
