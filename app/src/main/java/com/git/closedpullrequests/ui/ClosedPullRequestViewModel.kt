@@ -24,8 +24,8 @@ class ClosedPullRequestsViewModel @Inject constructor(
         get() = _closedPullRequests
 
     fun fetchClosedPullRequests(owner: String, repo: String) {
+        loaderVisibility.postValue(true)
         viewModelScope.launch {
-            loaderVisibility.postValue(true)
             try {
                 repository.getClosedPullRequests(owner, repo).collect {
                     _closedPullRequests.value = it

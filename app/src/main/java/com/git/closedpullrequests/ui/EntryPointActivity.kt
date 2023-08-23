@@ -17,6 +17,8 @@ class EntryPointActivity : AppCompatActivity() {
     private val viewModel: ClosedPullRequestsViewModel by viewModels()
     private var adapter = PullRequestAdapter(emptyList())
 
+    private val spacing : Int = 12
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -26,8 +28,9 @@ class EntryPointActivity : AppCompatActivity() {
             setHasFixedSize(true)
             this.adapter = adapter
         }
+        binding.recyclerView.addItemDecoration(ItemSpacingDecoration(spacing))
 
-//        viewModel.fetchClosedPullRequests("Qkprahlad101", "GithubClosedPullRequests") //initial data
+        viewModel.fetchClosedPullRequests("Qkprahlad101", "GithubClosedPullRequests") //initial data
         observer()
     }
 
@@ -38,10 +41,15 @@ class EntryPointActivity : AppCompatActivity() {
             adapter.setClosedPullRequests(closedPullRequests)
             adapter.notifyDataSetChanged()
             binding.recyclerView.adapter = adapter
-            binding.recyclerView.addItemDecoration(ItemSpacingDecoration(R.string.spacing))
         }
 
-        viewModel.loaderVisibility.observe(this){//to show loader
+        //to show loader
+        viewModel.loaderVisibility.observe(this){
+            if(viewModel.loaderVisibility.value == true){
+                binding.progressBar.visibility = View.VISIBLE
+            }else{
+                binding.progressBar.visibility = View.GONE
+            }
             binding.progressBar.visibility = View.GONE
         }
 
