@@ -1,7 +1,5 @@
 package com.git.closedpullrequests.model
 
-import android.app.Application
-import android.widget.Toast
 import com.git.closedpullrequests.model.data.ClosedPullRequest
 import com.git.closedpullrequests.model.data.GitHubApiService
 import kotlinx.coroutines.Dispatchers
