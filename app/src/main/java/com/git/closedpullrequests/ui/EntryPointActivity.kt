@@ -1,14 +1,11 @@
 package com.git.closedpullrequests.ui
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +26,20 @@ class EntryPointActivity : AppCompatActivity() {
             this.adapter = adapter
         }
 
+//        viewModel.fetchClosedPullRequests("Qkprahlad101", "GithubClosedPullRequests") //initial data
+        observer()
+    }
+
+    private fun observer() {
+        val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
+
+        viewModel.closedPullRequests.observe(this) { closedPullRequests ->
+            adapter = PullRequestAdapter(closedPullRequests)
+            adapter.setClosedPullRequests(closedPullRequests)
+            adapter.notifyDataSetChanged()
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.addItemDecoration(ItemSpacingDecoration(spacing))
+        }
 
         binding.fetchButton.setOnClickListener {
             val owner = binding.ownerEditText.text.toString().trimEnd()
@@ -39,20 +50,6 @@ class EntryPointActivity : AppCompatActivity() {
             } else {
                 viewModel.fetchClosedPullRequests(owner, repo)
             }
-        }
-
-//        viewModel.fetchClosedPullRequests("Qkprahlad101", "GithubClosedPullRequests") //initial data
-        observer()
-    }
-
-    private fun observer() {
-        val spacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
-        viewModel.closedPullRequests.observe(this) { closedPullRequests ->
-            adapter = PullRequestAdapter(closedPullRequests)
-            adapter.setClosedPullRequests(closedPullRequests)
-            adapter.notifyDataSetChanged()
-            binding.recyclerView.adapter = adapter
-            binding.recyclerView.addItemDecoration(ItemSpacingDecoration(spacing))
         }
     }
 
