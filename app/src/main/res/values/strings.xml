@@ -3,4 +3,5 @@
     <string name="show_closed_pul_requests">Show Closed Pull Requests</string>
     <string name="owner">Github Username</string>
     <string name="repo">Repository Name</string>
+    <string name="spacing">12</string>
 </resources>
