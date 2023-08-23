@@ -43,14 +43,8 @@ class EntryPointActivity : AppCompatActivity() {
             binding.recyclerView.adapter = adapter
         }
 
-        //to show loader
-        viewModel.loaderVisibility.observe(this) {
-            if (viewModel.loaderVisibility.value == true) {
-                binding.progressBar.visibility = View.VISIBLE
-            } else {
-                binding.progressBar.visibility = View.GONE
-            }
-            binding.progressBar.visibility = View.GONE
+        viewModel.loaderVisibility.observe(this){ it ->
+            if(it) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
         }
 
         binding.fetchButton.setOnClickListener {
