@@ -4,4 +4,6 @@
     <string name="owner">Github Username</string>
     <string name="repo">Repository Name</string>
     <string name="spacing">12</string>
+    <string name="created_date">Created Date: %s</string>
+    <string name="closed_date">Closed Date: %s</string>
 </resources>

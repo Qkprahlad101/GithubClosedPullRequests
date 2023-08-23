@@ -17,7 +17,7 @@ class EntryPointActivity : AppCompatActivity() {
     private val viewModel: ClosedPullRequestsViewModel by viewModels()
     private var adapter = PullRequestAdapter(emptyList())
 
-    private val spacing : Int = 12
+    private val spacing: Int = 12
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,10 +44,10 @@ class EntryPointActivity : AppCompatActivity() {
         }
 
         //to show loader
-        viewModel.loaderVisibility.observe(this){
-            if(viewModel.loaderVisibility.value == true){
+        viewModel.loaderVisibility.observe(this) {
+            if (viewModel.loaderVisibility.value == true) {
                 binding.progressBar.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.progressBar.visibility = View.GONE
             }
             binding.progressBar.visibility = View.GONE
@@ -58,7 +58,7 @@ class EntryPointActivity : AppCompatActivity() {
             val repo = binding.repoEditText.text.toString().trimEnd()
 
             if (owner.isEmpty() || repo.isEmpty()) {
-                Toast.makeText(this, "Please enter both fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter both fields!!", Toast.LENGTH_SHORT).show()
             } else {
                 binding.progressBar.visibility = View.VISIBLE
                 viewModel.fetchClosedPullRequests(owner, repo)
