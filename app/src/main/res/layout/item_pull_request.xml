@@ -21,6 +21,14 @@
             android:padding="8dp"/>
 
         <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+
+        <TextView
             android:id="@+id/createdDateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,13 +37,6 @@
 
         <TextView
             android:id="@+id/closedDateTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:padding="8dp"/>
-
-        <TextView
-            android:id="@+id/userNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
