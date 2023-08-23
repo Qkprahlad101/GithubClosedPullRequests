@@ -38,10 +38,10 @@ class PullRequestAdapter(private var pullRequests: List<ClosedPullRequest>) : Re
         private val userImageView: ImageView = itemView.findViewById(R.id.userImageView)
 
         fun bind(pullRequest: ClosedPullRequest) {
-            titleTextView.text = pullRequest.title
-            createdDateTextView.text = pullRequest.createdDate
-            closedDateTextView.text = pullRequest.closedDate
-            userNameTextView.text = pullRequest.user.userName
+            titleTextView.text = "Title: "+ pullRequest.title
+            createdDateTextView.text = "Created Date: " + pullRequest.createdDate
+            closedDateTextView.text = "Closed Date: " + pullRequest.closedDate
+            userNameTextView.text = "User Name: "+ pullRequest.user.userName
             Glide.with(itemView.context)
                 .load(pullRequest.user.imageUrl)
                 .into(userImageView)
