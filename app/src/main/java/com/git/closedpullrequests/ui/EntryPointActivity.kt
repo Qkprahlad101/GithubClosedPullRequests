@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.databinding.ActivityMainBinding
@@ -59,5 +58,4 @@ class EntryPointActivity : AppCompatActivity() {
             }
         }
     }
-
 }
