@@ -23,6 +23,10 @@ class ClosedPullRequestsViewModel @Inject constructor(
     val closedPullRequests: LiveData<List<ClosedPullRequestResponse>>
         get() = _closedPullRequests
 
+    private val _selectedClosedPullRequest = MutableLiveData<ClosedPullRequestResponse>()
+    val selectedClosedPullRequest: LiveData<ClosedPullRequestResponse>
+        get() = _selectedClosedPullRequest
+
     fun fetchClosedPullRequests(owner: String, repo: String) {
         loaderVisibility.value = true
         viewModelScope.launch {

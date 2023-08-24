@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class EntryPointActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: ClosedPullRequestsViewModel by viewModels()
-    private var adapter = PullRequestAdapter(emptyList())
+    private var adapter = PullRequestAdapter(this,emptyList())
 
     private val spacing: Int = 12
 
@@ -38,7 +38,7 @@ class EntryPointActivity : AppCompatActivity() {
     private fun observer() {
 
         viewModel.closedPullRequests.observe(this) { closedPullRequests ->
-            adapter = PullRequestAdapter(closedPullRequests)
+            adapter = PullRequestAdapter(this, closedPullRequests)
             adapter.setClosedPullRequests(closedPullRequests)
             adapter.notifyDataSetChanged()
             binding.recyclerView.adapter = adapter

@@ -22,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.git.closedpullrequests.ui.ClosedPullRequestDetailsActivity"
+            android:label="Closed Pull Request Details"
+            android:theme="@style/Theme.ComposeSample" />
     </application>
 
 </manifest>
