@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.utils.formatDate
 import com.git.closedpullrequests.model.data.response.ClosedPullRequestResponse
@@ -51,9 +51,9 @@ class PullRequestAdapter(private val context: Context, private var pullRequests:
             createdDateTextView.text = "Created Date: " +  formatDate(pullRequest.createdDate)
             closedDateTextView.text = "Closed Date: " + formatDate(pullRequest.closedDate)
             userNameTextView.text = "User Name: "+ pullRequest.user.userName
-            Glide.with(itemView.context)
-                .load(pullRequest.user.imageUrl)
-                .into(userImageView)
+//            Glide.with(itemView.context)
+//                .load(pullRequest.user.imageUrl)
+//                .into(userImageView)
         }
     }
 }

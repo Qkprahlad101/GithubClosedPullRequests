@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
 import com.git.closedpullrequests.R
 import com.git.closedpullrequests.databinding.ActivityClosedPullRequestDetailsBinding
 import com.git.closedpullrequests.model.data.response.ClosedPullRequestResponse
@@ -31,9 +30,9 @@ class ClosedPullRequestDetailsActivity : AppCompatActivity() {
             binding.closedDateTextView.text = "Closed Date: " + formatDate(it.closedDate)
             // Load the image using a library like Glide or Picasso
             // Example with Glide:
-            Glide.with(this)
-                .load(it.user.imageUrl)
-                .into(binding.userImageView)
+//            Glide.with(this)
+//                .load(it.user.imageUrl)
+//                .into(binding.userImageView)
         }
     }
 }
