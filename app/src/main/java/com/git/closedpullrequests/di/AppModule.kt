@@ -34,7 +34,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideClosedPullRequestsViewModel(repository: GitHubRepository, application: Application): ClosedPullRequestsViewModel {
-        return ClosedPullRequestsViewModel(repository, application)
+    fun provideClosedPullRequestsViewModel(repository: GitHubRepository): ClosedPullRequestsViewModel {
+        return ClosedPullRequestsViewModel(repository)
     }
 }

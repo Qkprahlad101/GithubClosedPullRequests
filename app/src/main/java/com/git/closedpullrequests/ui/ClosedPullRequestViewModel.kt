@@ -2,6 +2,8 @@ package com.git.closedpullrequests.ui
 
 import android.app.Application
 import android.widget.Toast
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,30 +16,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ClosedPullRequestsViewModel @Inject constructor(
-    private val repository: GitHubRepository,
-    private val application: Application
+    private val repository: GitHubRepository
 ) : ViewModel() {
-
-    private val _closedPullRequests = MutableLiveData<List<ClosedPullRequestResponse>>()
-    val loaderVisibility = MutableLiveData(false)
-    val closedPullRequests: LiveData<List<ClosedPullRequestResponse>>
-        get() = _closedPullRequests
-
-    private val _selectedClosedPullRequest = MutableLiveData<ClosedPullRequestResponse>()
-    val selectedClosedPullRequest: LiveData<ClosedPullRequestResponse>
-        get() = _selectedClosedPullRequest
+    private val _closedPullRequests = mutableStateOf(emptyList<ClosedPullRequestResponse>())
+    val closedPullRequests: State<List<ClosedPullRequestResponse>> = _closedPullRequests
 
     fun fetchClosedPullRequests(owner: String, repo: String) {
-        loaderVisibility.value = true
+
         viewModelScope.launch {
             try {
-                repository.getClosedPullRequests(owner, repo).collect {
+                repository.getClosedPullRequests("Qkprahlad101", "GithubClosedPullRequests").collect{
                     _closedPullRequests.value = it
                 }
             } catch (e: Exception) {
-                Toast.makeText(application, "Error occured: $e ", Toast.LENGTH_SHORT).show()
-            }finally {
-                loaderVisibility.value = false
+                // Handle error
             }
         }
     }
